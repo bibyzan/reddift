@@ -4,10 +4,9 @@
 [![Platform](https://img.shields.io/cocoapods/p/reddift.svg?style=flat)](http://cocoadocs.org/docsets/reddift)
 [![Build Status](https://travis-ci.org/sonsongithub/reddift.svg?branch=master)](https://travis-ci.org/sonsongithub/reddift)
 
-# beefcake fork
+# cache fork
 
  * fixes swift 4 errors
-# currently developing:
  * object and media cache management
 
 # reddift
