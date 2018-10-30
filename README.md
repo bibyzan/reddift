@@ -7,7 +7,7 @@
 # beefcake fork
 
  * fixes swift 4 errors
- developing these features:
+# currently developing:
  * added support for getting users home feed
  * object and media cache management
 
