@@ -4,6 +4,13 @@
 [![Platform](https://img.shields.io/cocoapods/p/reddift.svg?style=flat)](http://cocoadocs.org/docsets/reddift)
 [![Build Status](https://travis-ci.org/sonsongithub/reddift.svg?branch=master)](https://travis-ci.org/sonsongithub/reddift)
 
+# beefcake fork
+
+ * fixes swift 4 errors
+ developing these features:
+ * added support for getting users home feed
+ * object and media cache management
+
 # reddift
 reddift is Swift Reddit API Wrapper framework, and includes a browser is developed using the framework.
 
