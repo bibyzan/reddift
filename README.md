@@ -8,7 +8,6 @@
 
  * fixes swift 4 errors
 # currently developing:
- * added support for getting users home feed
  * object and media cache management
 
 # reddift
