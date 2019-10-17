@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Thing {
+public protocol DatabaseObject {
     var id: String {get}
     var name: String {get}
     static var kind: String {get}

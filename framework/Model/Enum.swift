@@ -171,13 +171,13 @@ public enum LinkSortType {
     public var description: String {
         switch self {
         case .controversial:
-            return "Sort by Controversial"
+            return "Controversial"
         case .top:
-            return "Sort by Top"
+            return "Top"
         case .hot:
-            return "Sort by Hot"
+            return "Hot"
         case .new:
-            return "Sort by New"
+            return "New"
         }
     }
 }

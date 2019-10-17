@@ -78,7 +78,7 @@ Returns Result<Error> object when any error happned.
 - parameter json: JSON object is returned from reddit.
 - returns: Result object. Result object has a list of Thing object, otherwise error object.
 */
-func json2CommentAndMore(from json: JSONAny) -> Result<[Thing]> {
+func json2CommentAndMore(from json: JSONAny) -> Result<[DatabaseObject]> {
     let (list, error) = Parser.commentAndMore(from: json)
     if let error = error {
         return Result(error: error)

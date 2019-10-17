@@ -13,7 +13,7 @@ More object.
 "more" is included in Listing object(Maybe).
 If Listing object has "more" object, it has mure more children to be downloaded.
 */
-public struct More: Thing {
+public struct More: DatabaseObject {
     /// identifier of Thing like 15bfi0.
     public let id: String
     /// name of Thing, that is fullname, like t3_15bfi0.

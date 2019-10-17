@@ -276,8 +276,12 @@ extension Session {
      */
     @discardableResult
     public func getSubredditSearch(_ query: String, paginator: Paginator, completion: @escaping (Result<Listing>) -> Void) throws -> URLSessionDataTask {
-        let parameter = paginator.dictionaryByAdding(parameters: ["q": query])
-        guard let request = URLRequest.requestForOAuth(with: baseURL, path: "/subreddits/search", parameter: parameter, method: "GET", token: token)
+        //let parameter = paginator.dictionaryByAdding(parameters: ["q": query])
+        var beforeParam = ""
+        if paginator.after != "" {
+            beforeParam = "&after=\(paginator.after)"
+        }
+        guard let request = URLRequest.requestForOAuth(with: baseURL, path: "/subreddits/search.json?q=\(query)&limit=100", parameter: paginator.parameterDictionary, method: "GET", token: token)
             else { throw ReddiftError.canNotCreateURLRequest as NSError }
         let closure = {(data: Data?, response: URLResponse?, error: NSError?) -> Result<Listing> in
             return Result(from: Response(data: data, urlResponse: response), optional: error)

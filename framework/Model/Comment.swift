@@ -15,8 +15,8 @@ import HTMLSpecialCharacters
  - parameter comment: Comment object will be expanded.
  - returns: Array contains Comment objects which are expaned from specified Comment object and depth list of them.
  */
-public func extendAllReplies(in comment: Thing, current depth: Int) -> ([(Thing, Int)]) {
-    var buf: [(Thing, Int)] = []
+public func extendAllReplies(in comment: DatabaseObject, current depth: Int) -> ([(DatabaseObject, Int)]) {
+    var buf: [(DatabaseObject, Int)] = []
     
     if let comment = comment as? Comment {
         buf.append((comment, depth))
@@ -35,7 +35,7 @@ public func extendAllReplies(in comment: Thing, current depth: Int) -> ([(Thing,
 /**
 Comment object.
 */
-public struct Comment: Thing, Created, Votable {
+public struct Comment: DatabaseObject, Created, Votable {
     /// identifier of Thing like 15bfi0.
     public let id: String
     /// name of Thing, that is fullname, like t3_15bfi0.

@@ -11,7 +11,7 @@ import Foundation
 /**
 Account object.
 */
-public struct Account: Thing, Created {
+public struct Account: DatabaseObject, Created {
     /// identifier of Thing like 15bfi0.
     public let id: String
     /// name of Thing, that is fullname, like t3_15bfi0.
@@ -136,7 +136,7 @@ public struct Account: Thing, Created {
     }
 }
 
-func parseDataInJSON_t2(_ json: JSONAny) -> Result<Thing> {
+func parseDataInJSON_t2(_ json: JSONAny) -> Result<DatabaseObject> {
     if let object = json as? JSONDictionary {
         return Result(fromOptional: Account(json: object), error: ReddiftError.accountJsonObjectIsMalformed as NSError)
     }

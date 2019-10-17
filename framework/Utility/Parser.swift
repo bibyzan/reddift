@@ -75,14 +75,14 @@ class Parser: NSObject {
      Parse more list
      Parse json object to extract a list which is composed of Comment and More.
     */
-    class func commentAndMore(from json: JSONAny) -> ([Thing], NSError?) {
+    class func commentAndMore(from json: JSONAny) -> ([DatabaseObject], NSError?) {
         if let json = json as? JSONDictionary {
             if let root = json["json"] as? JSONDictionary {
                 if let data = root["data"] as? JSONDictionary {
                     if let things = data["things"] as? [JSONDictionary] {
                         let r = things
                             .compactMap { Parser.parse($0) }
-                            .compactMap { $0 as? Thing }
+                            .compactMap { $0 as? DatabaseObject }
                         return (r, nil)
                     }
                 }
@@ -145,7 +145,7 @@ class Parser: NSObject {
 	Parse list object in JSON
 	*/
     class func listing(from json: JSONDictionary) -> Listing {
-        var list: [Thing] = []
+        var list: [DatabaseObject] = []
         var paginator: Paginator? = Paginator()
         
         if let data = json["data"] as? JSONDictionary {
@@ -153,7 +153,7 @@ class Parser: NSObject {
                 for child in children {
                     if let child = child as? JSONDictionary {
                         let obj: Any? = redditAny(from: child)
-                        if let obj = obj as? Thing {
+                        if let obj = obj as? DatabaseObject {
                             list.append(obj)
                         }
                     }

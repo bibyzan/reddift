@@ -231,7 +231,7 @@ extension Session {
     - returns: Data task which requests search to reddit.com.
      */
     @discardableResult
-    public func getRelatedArticles(_ paginator: Paginator, thing: Thing, limit: Int = 25, completion: @escaping (Result<(Listing, Listing)>) -> Void) throws -> URLSessionDataTask {
+    public func getRelatedArticles(_ paginator: Paginator, thing: DatabaseObject, limit: Int = 25, completion: @escaping (Result<(Listing, Listing)>) -> Void) throws -> URLSessionDataTask {
         let parameter = paginator.dictionaryByAdding(parameters: [
             "limit": "\(limit)",
             //            "sr_detail": "true",
@@ -259,7 +259,7 @@ extension Session {
     - returns: Data task which requests search to reddit.com.
      */
     @discardableResult
-    public func getDuplicatedArticles(_ paginator: Paginator, thing: Thing, limit: Int = 25, completion: @escaping  (Result<(Listing, Listing)>) -> Void) throws -> URLSessionDataTask {
+    public func getDuplicatedArticles(_ paginator: Paginator, thing: DatabaseObject, limit: Int = 25, completion: @escaping  (Result<(Listing, Listing)>) -> Void) throws -> URLSessionDataTask {
         let parameter = paginator.dictionaryByAdding(parameters: [
             "limit": "\(limit)",
 //            "sr_detail": "true",

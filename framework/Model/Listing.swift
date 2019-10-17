@@ -14,7 +14,7 @@ This class has children, paginator and more.
 */
 public struct Listing {
 	/// elements of the list
-	public let children: [Thing]
+	public let children: [DatabaseObject]
 	/// paginator of the list
     public let paginator: Paginator
     
@@ -23,7 +23,7 @@ public struct Listing {
         self.paginator = Paginator()
     }
     
-    public init(children: [Thing], paginator: Paginator) {
+    public init(children: [DatabaseObject], paginator: Paginator) {
         self.children = children
         self.paginator = paginator
     }

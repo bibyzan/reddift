@@ -145,7 +145,7 @@ extension Session {
     - returns: Data task which requests search to reddit.com.
      */
     @discardableResult
-    public func setNSFW(_ mark: Bool, thing: Thing, completion: @escaping (Result<JSONAny>) -> Void) throws -> URLSessionDataTask {
+    public func setNSFW(_ mark: Bool, thing: DatabaseObject, completion: @escaping (Result<JSONAny>) -> Void) throws -> URLSessionDataTask {
         let path = mark ? "/api/marknsfw" : "/api/unmarknsfw"
         guard let request = URLRequest.requestForOAuth(with: baseURL, path: path, parameter: ["id": thing.name], method: "POST", token: token)
             else { throw ReddiftError.canNotCreateURLRequest as NSError }
@@ -179,7 +179,7 @@ extension Session {
     - returns: Data task which requests search to reddit.com.
      */
     @discardableResult
-    public func report(_ thing: Thing, reason: String, otherReason: String, completion: @escaping (Result<RedditAny>) -> Void) throws -> URLSessionDataTask {
+    public func report(_ thing: DatabaseObject, reason: String, otherReason: String, completion: @escaping (Result<RedditAny>) -> Void) throws -> URLSessionDataTask {
         let parameter = [
             "api_type": "json",
             "reason": reason,
@@ -265,7 +265,7 @@ extension Session {
      - returns: Data task which requests search to reddit.com.
      */
     @discardableResult
-    public func getMoreChildren(_ children: [String], link: Link, sort: CommentSort, id: String? = nil, completion: @escaping (Result<[Thing]>) -> Void) throws -> URLSessionDataTask {
+    public func getMoreChildren(_ children: [String], link: Link, sort: CommentSort, id: String? = nil, completion: @escaping (Result<[DatabaseObject]>) -> Void) throws -> URLSessionDataTask {
         let commaSeparatedChildren = children.joined(separator: ",")
         var parameter = [
             "children": commaSeparatedChildren,
@@ -278,7 +278,7 @@ extension Session {
         }
         guard let request = URLRequest.requestForOAuth(with: baseURL, path: "/api/morechildren", parameter: parameter, method: "GET", token: token)
             else { throw ReddiftError.canNotCreateURLRequest as NSError }
-        let closure = {(data: Data?, response: URLResponse?, error: NSError?) -> Result<[Thing]> in
+        let closure = {(data: Data?, response: URLResponse?, error: NSError?) -> Result<[DatabaseObject]> in
             return Result(from: Response(data: data, urlResponse: response), optional: error)
                 .flatMap(response2Data)
                 .flatMap(data2Json)

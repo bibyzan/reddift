@@ -24,7 +24,7 @@ private func convertObjectToEscapedURLString(_ object: AnyObject?) -> String {
 /**
 Link content.
 */
-public struct Link: Thing, Created, Votable {
+public struct Link: DatabaseObject, Created, Votable {
     /// identifier of Thing like 15bfi0.
     public let id: String
     /// name of Thing, that is fullname, like t3_15bfi0.
@@ -304,9 +304,9 @@ public struct Link: Thing, Created, Votable {
         bannedBy = data["banned_by"] as? String ?? ""
         subreddit = data["subreddit"] as? String ?? ""
         let tempSelftextHtml = data["selftext_html"] as? String ?? ""
-        selftextHtml = tempSelftextHtml.unescapeHTML
+        selftextHtml = tempSelftextHtml//.unescapeHTML
         let tempSelftext = data["selftext"] as? String ?? ""
-        selftext = tempSelftext.unescapeHTML
+        selftext = tempSelftext//.unescapeHTML
         if let temp = data["likes"] as? Bool {
             likes = temp ? .up : .down
         } else {
@@ -331,17 +331,17 @@ public struct Link: Thing, Created, Votable {
         saved = data["saved"] as? Bool ?? false
         isSelf = data["is_self"] as? Bool ?? false
         let tempName = data["name"] as? String ?? ""
-        name = tempName.unescapeHTML
+        name = tempName//.unescapeHTML
         permalink = data["permalink"] as? String ?? ""
         stickied = data["stickied"] as? Bool ?? false
         created = data["created"] as? Int ?? 0
         
         let tempUrl = data["url"] as? String ?? ""
-        url = tempUrl.unescapeHTML
+        url = tempUrl//.unescapedHTML
         
         authorFlairText = data["author_flair_text"] as? String ?? ""
         let tempTitle = data["title"] as? String ?? ""
-        title = tempTitle.unescapeHTML
+        title = tempTitle//.unescapeHTML
         createdUtc = data["created_utc"] as? Int ?? 0
         ups = data["ups"] as? Int ?? 0
         upvoteRatio = data["upvote_ratio"] as? Double ?? 0

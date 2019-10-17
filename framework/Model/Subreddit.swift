@@ -52,7 +52,7 @@ public protocol SubredditURLPath {
 /**
 Subreddit object.
 */
-public struct Subreddit: SubredditURLPath, Thing, Created {
+public struct Subreddit: SubredditURLPath, DatabaseObject, Created {
     /// identifier of Thing like 15bfi0.
     public let id: String
     /// name of Thing, that is fullname, like t3_15bfi0.
